@@ -1,0 +1,63 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-balanced" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="left">
+            <ion-nav-back-button class="no-text">
+            </ion-nav-back-button>
+
+          <ion-nav-buttons side="right">
+            <input ng-show="showsearch" class="form-control searchbox" type='text' ng-model='Employers.model'  placeholder="Search Product..."
+                   uib-typeahead='employer.Product for employer in Employers.get($viewValue)'
+                   typeahead-min-length="3"
+                   typeahead-on-select='Employers.select($item)'
+                    typeahead-wait-ms="100" autocomplete="off"  >
+            <!--<input type="text" ng-show="showsearch" id="tags" class="searchbox" placeholder="Search Product...">-->
+            <button  ng-hide="showsearch" style="box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12);" class="button button-icon ion-android-search"
+                    ng-click="searchBox()"></button>
+            <button ng-show="showsearch" style="box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12);" class="button button-icon ion-close-round"
+                    ng-click="searchBox()"></button>
+                <button class="button button-icon button-clear ion-android-more-vertical" menu-toggle="right">
+                </button>
+
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="fabContent"></ion-nav-view>
+        <ion-nav-view name="menuContent" ng-class="{expanded: isExpanded}" ></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="right">
+        <ion-header-bar class="dark-bg expanded">
+            <span class="avatar" style="background: url('img/crown.jpg'); background-size: cover;"></span>
+            <h2>Urban Banya</h2>
+        </ion-header-bar>
+      <ion-content class="stable-bg has-expanded-header">
+        <ion-list>
+          <ion-item nav-clear menu-close ui-sref="app.category">
+            Home
+          </ion-item>
+          <ion-item ng-show="!getLoginStatus()" nav-clear menu-close ng-click="openLogin()">
+            Login
+          </ion-item>
+          <ion-item ng-show="getLoginStatus()" nav-clear menu-close ng-click="openMyGoodies()">
+            MY Account
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openOrders()">
+            Orders
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openOffers()">
+           Coupon Offers
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openAbout()">
+            About Urban
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openGoodies()">
+            Urban Goodies
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openTerms()">
+           Terms & Conditions
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="openContact()">
+            Contact Us
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
